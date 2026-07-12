@@ -109,7 +109,7 @@ For ChatGPT Plus / Custom GPTs or Claude Projects — no server, no terminal.
 ## Quick Start — CLI / Claude Code (install)
 
 ```bash
-git clone https://github.com/<your-org>/StelarGB.git
+git clone https://github.com/ronaega/stelargb.git
 mkdir -p ~/.claude/skills
 cp -r StelarGB/secure-web-skill ~/.claude/skills/stelargb-secure-web-builder
 ```
