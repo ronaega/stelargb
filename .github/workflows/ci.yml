@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  demo-apps-smoke-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [vulnerable-app, secure-app]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: demo/${{ matrix.app }}
+        run: npm install
+
+      - name: Start server and check it boots
+        working-directory: demo/${{ matrix.app }}
+        run: |
+          PORT=4500 npm start &
+          sleep 2
+          curl -sf http://localhost:4500/ > /dev/null
+          echo "${{ matrix.app }} booted successfully"
+
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check core assets exist
+        run: |
+          test -f secure-web-skill/SKILL.md
+          test -f web-prompts/claude-projects.md
+          test -f web-prompts/openai-custom-gpt.md
+          echo "Core assets present"
