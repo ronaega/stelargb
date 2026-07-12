@@ -86,8 +86,9 @@ StelarGB/
 │   ├── claude-projects.md         # Copy/paste system prompt for Claude Projects
 │   └── openai-custom-gpt.md       # Copy/paste instructions for ChatGPT Custom GPTs
 ├── demo/
-│   ├── vulnerable-app/            # "Before": string-concat SQL, raw HTML output
-│   ├── secure-app/                # "After": parameterized SQL, escaped HTML output
+│   ├── generation-transcripts/    # The prompt + Claude's raw before/after responses
+│   ├── before-app/                # Claude's real, unprompted generation: string-concat SQL, raw HTML
+│   ├── after-app/                 # Claude's real generation with the StelarGB prompt loaded
 │   └── README.md                  # How to run both and try the exact same payloads
 ├── PRD-stelargb.md                 # Original product requirements doc
 ├── LICENSE                        # MIT
@@ -109,7 +110,7 @@ For ChatGPT Plus / Custom GPTs or Claude Projects — no server, no terminal.
 ## Quick Start — CLI / Claude Code (install)
 
 ```bash
-git clone https://github.com/ronaega/stelargb.git
+git clone https://github.com/ronaega/Stelargb.git
 mkdir -p ~/.claude/skills
 cp -r StelarGB/secure-web-skill ~/.claude/skills/stelargb-secure-web-builder
 ```
@@ -120,15 +121,16 @@ you don't want it applied globally. Claude Code will pick up the
 
 ## See It Work: Comparison Demo
 
-`demo/` contains two small, identical Express apps built on a real SQLite
-engine (`sql.js`, compiled to WebAssembly) — one written the way an LLM
-writes by default, one written under the StelarGB rules. Same login form,
-same comment board, same seed data; only the query-building and
-HTML-rendering logic differs.
+`demo/` contains two Express apps built on a real SQLite engine (`sql.js`,
+compiled to WebAssembly) that are **Claude's actual generations** for the
+identical request — one produced with no security prompt loaded, one
+produced with the StelarGB prompt loaded as system instructions. Nothing was
+hand-edited afterward; see `demo/generation-transcripts/` for the raw
+transcripts.
 
 ```bash
-cd demo/vulnerable-app && npm install && npm start   # http://localhost:4001
-cd demo/secure-app     && npm install && npm start   # http://localhost:4002
+cd demo/before-app && npm install && npm start   # http://localhost:4001
+cd demo/after-app  && npm install && npm start   # http://localhost:4002
 ```
 
 Log into both with username `admin' --` and any password. The vulnerable
@@ -156,7 +158,7 @@ Deliberately **out of scope for v1.0** (see [`PRD-stelargb.md`](./PRD-stelargb.m
 
 ## Disclaimer
 
-StelarGB's `demo/vulnerable-app` is **intentionally insecure** and provided
+StelarGB's `demo/before-app` is **intentionally insecure** and provided
 for local, offline education only. Do not deploy it anywhere reachable from
 the internet. The prompts and skill files are provided as-is; always review
 AI-generated code before deploying it, and treat StelarGB as one layer of

@@ -123,7 +123,7 @@ app.get('/search', (req, res) => {
 
 ## See it in action
 
-`../demo/vulnerable-app` and `../demo/secure-app` are two runnable Express
+`../demo/before-app` and `../demo/after-app` are two runnable Express
 apps with identical features — one written the way an LLM would write it
 with no guardrails, one written under these two rules. Run both locally
 and try the same SQLi/XSS payloads against each; see `../demo/README.md`.

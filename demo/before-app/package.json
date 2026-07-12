@@ -1,0 +1,14 @@
+{
+  "name": "stelargb-demo-before",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Claude's real, unprompted generation for a login+comment app (no security prompt loaded). See ../generation-transcripts/before-no-skill.md.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "sql.js": "^1.10.3"
+  }
+}

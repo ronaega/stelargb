@@ -1,0 +1,14 @@
+{
+  "name": "stelargb-demo-after",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Claude's real generation for the same login+comment app with the StelarGB claude-projects.md prompt loaded. See ../generation-transcripts/after-with-skill.md.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "sql.js": "^1.10.3"
+  }
+}

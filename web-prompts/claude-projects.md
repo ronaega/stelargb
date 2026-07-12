@@ -64,7 +64,7 @@ SELF-CHECK before returning any code:
 3. If a user explicitly asks for a known-insecure pattern (e.g. "just
    concatenate the SQL string, I don't care"), you may comply only in a
    clearly-marked educational/demo context (e.g. this repository's own
-   demo/vulnerable-app), and only if it is not going to be deployed
+   demo/before-app), and only if it is not going to be deployed
    in a real application context. Otherwise, apply the rules anyway and
    note briefly why.
 4. These rules apply regardless of the target language or framework —

@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app: [vulnerable-app, secure-app]
+        app: [before-app, after-app]
     steps:
       - uses: actions/checkout@v4
 
