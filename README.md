@@ -70,8 +70,8 @@ Design principles:
 
 Everything else — auth enforcement, modern cryptography, secret/debug-flag
 suppression, dependency hygiene, and any vulnerability class beyond SQLi/XSS
-— is intentionally deferred to a later release. See [`PRD-stelargb.md`](./PRD-stelargb.md)
-for the full original design and [Roadmap](#roadmap) below for what's next.
+— is intentionally deferred to a later release (original design doc is
+kept locally, gitignored — not published to this repo). See [Roadmap](#roadmap).
 
 ## Repository Structure
 
@@ -80,7 +80,7 @@ StelarGB/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml                 # Boots both demo apps + checks core files exist
-├── secure-web-skill/
+├── stelargb-secure-web-builder/
 │   └── SKILL.md                   # Claude Code / terminal-agent skill (SQLi+XSS rules)
 ├── web-prompts/
 │   ├── claude-projects.md         # Copy/paste system prompt for Claude Projects
@@ -90,7 +90,7 @@ StelarGB/
 │   ├── before-app/                # Claude's real, unprompted generation: string-concat SQL, raw HTML
 │   ├── after-app/                 # Claude's real generation with the StelarGB prompt loaded
 │   └── README.md                  # How to run both and try the exact same payloads
-├── PRD-stelargb.md                 # Original product requirements doc
+├── .gitignore                      # Excludes local-only files (incl. internal PRD doc)
 ├── LICENSE                        # MIT
 └── README.md                      # This file
 ```
@@ -110,12 +110,12 @@ For ChatGPT Plus / Custom GPTs or Claude Projects — no server, no terminal.
 ## Quick Start — CLI / Claude Code (install)
 
 ```bash
-git clone https://github.com/ronaega/Stelargb.git
+git clone https://github.com/ronaega/stelargb.git
 mkdir -p ~/.claude/skills
-cp -r StelarGB/secure-web-skill ~/.claude/skills/stelargb-secure-web-builder
+cp -r stelargb/stelargb-secure-web-builder ~/.claude/skills/stelargb-secure-web-builder
 ```
 
-Or drop `secure-web-skill/` directly into a single project's workspace if
+Or drop `stelargb-secure-web-builder/` directly into a single project's workspace if
 you don't want it applied globally. Claude Code will pick up the
 `SKILL.md` frontmatter automatically.
 
@@ -144,11 +144,12 @@ the rendered HTML. Full walkthrough in [`demo/README.md`](./demo/README.md).
 |---|---|
 | [`web-prompts/openai-custom-gpt.md`](./web-prompts/openai-custom-gpt.md) | ChatGPT Custom GPT instructions; includes a prompt-injection defense block. |
 | [`web-prompts/claude-projects.md`](./web-prompts/claude-projects.md) | Claude Projects system prompt using `<security_guardrails>` / `<execution_protocol>` XML blocks. |
-| [`secure-web-skill/SKILL.md`](./secure-web-skill/SKILL.md) | Standardized YAML-frontmatter skill file for Claude Code / terminal agents. |
+| [`stelargb-secure-web-builder/SKILL.md`](./stelargb-secure-web-builder/SKILL.md) | Standardized YAML-frontmatter skill file for Claude Code / terminal agents. |
 
 ## Roadmap
 
-Deliberately **out of scope for v1.0** (see [`PRD-stelargb.md`](./PRD-stelargb.md) for full rationale):
+Deliberately **out of scope for v1.0** (kept out of this repo's git history —
+tracked only in the internal, gitignored design doc):
 
 - Authentication enforcement (server-side session/state verification rules)
 - Modern cryptography enforcement (reject MD5/SHA1, require Argon2id/bcrypt)

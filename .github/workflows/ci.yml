@@ -37,7 +37,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check core assets exist
         run: |
-          test -f secure-web-skill/SKILL.md
+          test -f stelargb-secure-web-builder/SKILL.md
           test -f web-prompts/claude-projects.md
           test -f web-prompts/openai-custom-gpt.md
           echo "Core assets present"
