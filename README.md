@@ -23,7 +23,9 @@ during code generation.
 > security pillars (auth, crypto, injection, secrets, dependencies); this
 > first release deliberately narrows to the two highest-frequency,
 > highest-impact classes so the rule set stays small enough to verify and
-> test. See [Roadmap](#roadmap).
+> test. See [Roadmap](#roadmap). (Note: "v1.0" here is the project's
+> *scope* decision — the rules themselves are up to v1.2; see
+> [Document Matrix](#document-matrix).)
 
 ---
 
@@ -140,11 +142,14 @@ the rendered HTML. Full walkthrough in [`demo/README.md`](./demo/README.md).
 
 ## Document Matrix
 
-| File | Purpose |
-|---|---|
-| [`web-prompts/openai-custom-gpt.md`](./web-prompts/openai-custom-gpt.md) | ChatGPT Custom GPT instructions; includes a prompt-injection defense block. |
-| [`web-prompts/claude-projects.md`](./web-prompts/claude-projects.md) | Claude Projects system prompt using `<security_guardrails>` / `<execution_protocol>` XML blocks. |
-| [`stelargb-secure-web-builder/SKILL.md`](./stelargb-secure-web-builder/SKILL.md) | Standardized YAML-frontmatter skill file for Claude Code / terminal agents. |
+| File | Version | Purpose |
+|---|---|---|
+| [`web-prompts/openai-custom-gpt.md`](./web-prompts/openai-custom-gpt.md) | v1.2 | ChatGPT Custom GPT instructions; includes a prompt-injection defense block. |
+| [`web-prompts/claude-projects.md`](./web-prompts/claude-projects.md) | v1.2 | Claude Projects system prompt using `<security_guardrails>` / `<execution_protocol>` XML blocks. |
+| [`stelargb-secure-web-builder/SKILL.md`](./stelargb-secure-web-builder/SKILL.md) | v1.2 | Standardized YAML-frontmatter skill file for Claude Code / terminal agents. |
+
+All three are kept in sync at the same rule version; see each file's
+changelog notes at the top for what changed between versions.
 
 ## Roadmap
 
